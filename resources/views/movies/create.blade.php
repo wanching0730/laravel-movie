@@ -8,6 +8,23 @@ use App\Common;
 
 @section('content')
 
+<script>
+
+    function validate() {
+        var title = document.forms['myForm']['title'].value;
+        var genre = document.forms['myForm']['genre'].value;
+        var year = document.forms['myForm']['year'].value;
+        var synopsis = document.forms['myForm']['synopsis'].value;
+        var image = document.forms['myForm']['image'].value;
+
+        if(title=="" || genre=="" || year=="" || synopsis=="") {
+            alert("Please complete all fields");
+            return false;
+        }
+    }
+
+</script>
+
     <div class="row col-md-12 col-lg-12 col-sm-12">
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -16,10 +33,8 @@ use App\Common;
 
         <div class="row  col-md-12 col-lg-12 col-sm-12">
 
-            {!! Form::model($movie, [
-                'route' => ['movie.store'],
-                'class' => 'form-horizontal'])
-            !!}
+            <form name="myForm" method="post" action="{{ route('movie.store') }}" onSubmit="return validate()">
+                                {{ csrf_field() }}
 
             <div class="form-group row">
                 {!! Form::label('movie-title', 'Title', [
@@ -29,8 +44,8 @@ use App\Common;
                 <div class="col-sm-9">
                     {!! Form::text('title', null, [
                         'id' => 'movie-title',
-                        'placeholder' => 'Eg: Batman',
                         'class' => 'form-control',
+                        'placeholder' => 'Eg: Batman',
                         'maxlength' => 20,
                     ]) !!}
                 </div>
@@ -91,7 +106,7 @@ use App\Common;
                 </div>
             </div>
 
-            {!! Form::close() !!}
+        </form>
         </div>
     </div>
         

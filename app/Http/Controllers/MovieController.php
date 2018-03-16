@@ -70,7 +70,8 @@ class MovieController extends Controller
         $movie->fill($request->all());
         $movie->save();
 
-        return redirect()->route('movie.index');
+        return redirect()->route('movie.index')
+        ->with('success', 'Movie was updated successfully');
     }
 
     public function destroy($movieId) 

@@ -6,13 +6,28 @@
 
 @section('content')
 
-    <div class="panel-body">
-        {!! Form::model($movie, [
-            'route' => ['movie.update', $movie->id],
-            'class' => 'form-horizontal'
-        ]) !!}
+<script>
 
-         <div class="form-group row">
+    function validate() {
+        var title = document.forms['myForm']['title'].value;
+        var genre = document.forms['myForm']['genre'].value;
+        var year = document.forms['myForm']['year'].value;
+        var synopsis = document.forms['myForm']['synopsis'].value;
+
+        if(title=="" || genre=="" || year=="" || synopsis=="") {
+            alert("Please complete all fields");
+            return false;
+        }
+    }
+
+</script>
+
+    <div class="panel-body">
+
+        <form name="myForm" method="post" action="{{ route('movie.update', [$movie->id]) }}" onSubmit="return validate()">
+                                    {{ csrf_field() }}
+
+            <div class="form-group row">
                 {!! Form::label('movie-title', 'Title', [
                     'class' => 'control-label col-sm-3',
                 ]) !!}
@@ -81,7 +96,7 @@
                 </div>
             </div>
 
-        {!! Form::close() !!}
+        </form>
 
     </div>
     
