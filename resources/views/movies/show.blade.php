@@ -35,7 +35,7 @@
                 <tr>
                     <td>Image</td>
                     <td>
-                        @if(Storage::disk('public')->has($movie->title . '-' . $user->id . '.jpg'))
+                        @if(Storage::disk('public')->has($movie->title . '-' . $movie->genre . '.jpg'))
                             <img src="{{ $filename }}" style="height:50px; width:50px;"> 
                         @endif
                     </td>

@@ -40,9 +40,8 @@ class MovieController extends Controller
             $movie->fill($request->all());
             $movie->save();
 
-            $user = Auth::user();
             $file = $request->file('image');
-            $filename = $request['title'] . '-' . $user->id . '.jpg';
+            $filename = $request['title'] . '-' . $request['genre'] . '.jpg';
             if($file) {
                 if($filename)
                     Storage::disk('public')->put($filename, file_get_contents($file));
@@ -58,12 +57,11 @@ class MovieController extends Controller
     public function show($id)
     {
         $movie = Movie::find($id);
-        $user = Auth::user();
-        $file_name = $movie->title . '-' . $user->id . '.jpg';
+        $file_name = $movie->title . '-' . $movie->genre . '.jpg';
         $filename = Storage::url($file_name);
         if(!$movie) throw new ModelNotFoundException;
 
-        return view('movies.show', ['movie' => $movie, 'user' => $user, 'filename' => $filename]);
+        return view('movies.show', ['movie' => $movie, 'filename' => $filename]);
     }
 
     public function edit($id)

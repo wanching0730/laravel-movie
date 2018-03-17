@@ -72,25 +72,34 @@
             <div id="mySidenav" class="sidenav">
      
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <li><a href="{{ route('movie.index') }}"><i class="fas fa-film"></i> Movies</a></li>
-                <li>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-power-off" aria-hidden="true"></i>  Logout
-                    </a>
+                @guest
+                    <li><a href="{{ route('movie.index') }}"><i class="fas fa-film"></i> Movies</a></li>
+                @else
+                    <li><a href="{{ route('movie.index') }}"><i class="fas fa-film"></i> Movies</a></li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-power-off" aria-hidden="true"></i>  Logout
+                        </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                @endguest
             </div>
 
+           
+            <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">
             @guest
-                <span></span>
+                &#9776; 
             @else
-                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; {{ Auth::user()->name }}</span>
+                &#9776; {{ Auth::user()->name }}
             @endguest
+            
+            </span>
+            
 
             <script>
                 function openNav() {
