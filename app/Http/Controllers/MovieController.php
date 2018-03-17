@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Movie;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Response;
 
 class MovieController extends Controller
 {
@@ -37,6 +40,14 @@ class MovieController extends Controller
             $movie->fill($request->all());
             $movie->save();
 
+            $user = Auth::user();
+            $file = $request->file('image');
+            $filename = $request['title'] . '-' . $user->id . '.jpg';
+            if($file) {
+                if($filename)
+                    Storage::disk('local')->put('/public' . '/' . $filename, file_get_contents($file));
+            }
+
             return redirect()->route('movie.index')
                 ->with('success', 'Movie was added successfully');
         } 
@@ -47,9 +58,12 @@ class MovieController extends Controller
     public function show($id)
     {
         $movie = Movie::find($id);
+        $user = Auth::user();
+        $file_name = $movie->title . '-' . $user->id . '.jpg';
+        $filename = Storage::url($file_name);
         if(!$movie) throw new ModelNotFoundException;
 
-        return view('movies.show', ['movie' => $movie]);
+        return view('movies.show', ['movie' => $movie, 'user' => $user, 'filename' => $filename]);
     }
 
     public function edit($id)
@@ -81,5 +95,11 @@ class MovieController extends Controller
             return redirect()->route('movie.index')
             ->with('success', 'Movie was deleted successfully');
         }
+    }
+
+    public function getMovieImage($filename) {
+        $url = Storage::url($filename);
+        var_dump($url);
+        return $url;
     }
 }

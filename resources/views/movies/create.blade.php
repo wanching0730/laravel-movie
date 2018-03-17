@@ -33,7 +33,7 @@ use App\Common;
 
         <div class="row  col-md-12 col-lg-12 col-sm-12">
 
-            <form name="myForm" method="post" action="{{ route('movie.store') }}" onSubmit="return validate()">
+            <form name="myForm" method="post" action="{{ route('movie.store') }}" onSubmit="return validate()" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
             <div class="form-group row">
@@ -88,12 +88,12 @@ use App\Common;
             </div>
 
             <div class="form-group row">
-                {!! Form::label('movie-image', 'Poster', [
+                {!! Form::label('movie-image', 'Poster (only .jpg)', [
                         'class' => 'control-label col-sm-3',
                     ]) !!}
 
                 <div class="col-sm-9">
-                    {!! Form::file('image', array('class' => 'image')) !!}
+                    {!! Form::file('image') !!}
                 </div>
             </div>
 

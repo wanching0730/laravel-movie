@@ -35,7 +35,9 @@
                 <tr>
                     <td>Image</td>
                     <td>
-                        <img src='/movie/{{ $movie->id }}/image'/></td>
+                        @if(Storage::disk('local')->has('/public' . '/' . $movie->title . '-' . $user->id . '.jpg'))
+                            <img src="{{ $filename }}" style="height:50px; width:50px;"> 
+                        @endif
                     </td>
                 </tr>
             </tbody>
