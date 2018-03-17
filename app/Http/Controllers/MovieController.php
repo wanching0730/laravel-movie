@@ -45,7 +45,7 @@ class MovieController extends Controller
             $filename = $request['title'] . '-' . $user->id . '.jpg';
             if($file) {
                 if($filename)
-                    Storage::disk('local')->put('/public' . '/' . $filename, file_get_contents($file));
+                    Storage::disk('public')->put($filename, file_get_contents($file));
             }
 
             return redirect()->route('movie.index')
@@ -95,11 +95,5 @@ class MovieController extends Controller
             return redirect()->route('movie.index')
             ->with('success', 'Movie was deleted successfully');
         }
-    }
-
-    public function getMovieImage($filename) {
-        $url = Storage::url($filename);
-        var_dump($url);
-        return $url;
     }
 }
