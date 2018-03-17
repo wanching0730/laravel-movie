@@ -6,6 +6,16 @@
 
 @section('content')
 
+    <div class="container">
+        <nav aria-label="breadcrumb" style="background-color: white;">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                <li class="breadcrumb-item"><a href="/movie">Movies</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $movie->title }}</li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="panel-body">
         <table class="table table-stripped" border="1">
             <thead>
