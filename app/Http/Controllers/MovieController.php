@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Response;
+use App\Common; 
 
 class MovieController extends Controller
 {
@@ -36,12 +37,17 @@ class MovieController extends Controller
             //     'postcode' => 'required'
             // ]);
 
+            $genreName = Common::$genre[$request['genre']];
+            $movieYear = Common::$years[$request['year']];
+
             $movie = new Movie;
             $movie->fill($request->all());
+            $movie->genre = $genreName;
+            $movie->year = $movieYear;
             $movie->save();
 
             $file = $request->file('image');
-            $filename = $request['title'] . '-' . $request['genre'] . '.jpg';
+            $filename = $request['title'] . '-' . $genreName . '.jpg';
             if($file) {
                 if($filename)
                     Storage::disk('public')->put($filename, file_get_contents($file));
@@ -90,8 +96,9 @@ class MovieController extends Controller
     {
         $findMovie = Movie::find($movieId);
         if($findMovie->delete()) {
-            return redirect()->route('movie.index')
-            ->with('success', 'Movie was deleted successfully');
+            var_dump($movieId);
+            // return redirect()->route('movie.index')
+            // ->with('success', 'Movie was deleted successfully');
         }
     }
 }
