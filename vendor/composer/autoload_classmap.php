@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddFullGenreAndFullYearToMoviesTable' => $baseDir . '/database/migrations/2018_03_18_100302_add_fullGenre_and_fullYear_to_movies_table.php',
     'App\\Common' => $baseDir . '/app/Common.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

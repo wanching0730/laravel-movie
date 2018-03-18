@@ -24,15 +24,15 @@
 
     <div class="panel-body">
         @if(count($movies) > 0)
-            <table class="table table-hover table-dark" border="1">
+            <table class="table table-hover table-dark" border="1" style="text-align: center;">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Title</th>
-                        <th>Genre</th>
-                        <th>Year</th>
+                        <th style="text-align: center;">No.</th>
+                        <th style="text-align: center;">Title</th>
+                        <th style="text-align: center;">Genre</th>
+                        <th style="text-align: center;">Year</th>
                         @if(Auth::check())
-                            <th>Actions</th>
+                            <th colspan="2" style="text-align: center;">Actions</th>
                         @endif
                     </tr>
                 </thead>
@@ -55,21 +55,23 @@
                                 </div>
                             </td>
                             <td class="table-text">
-                                <div>{{ $movie->genre }}</div>
+                                <div>{{ $movie->fullGenre }}</div>
                             </td>
                             <td class="table-text">
-                                <div>{{ $movie->year }}</div>
+                                <div>{{ $movie->fullYear }}</div>
                             </td>
                             @if(Auth::check())
                                 <td>
                                     <li>
                                         <a href="/movie/edit/{{ $movie->id }}"><i class="fas fa-edit"></i> Edit</a></li>
                                     </li>
+                                </td>
+                                <td>
                                     <li>
                                         <a   
-                                        href="/movie/{$movie->id}"
+                                        href="#"
                                             onclick="
-                                            var result = confirm('Are you sure you wish to delete this movie?');
+                                            var result = confirm('Are you sure you wish to delete this movie {{$movie->id}}?');
                                                 if( result ){
                                                         event.preventDefault();
                                                         document.getElementById('delete-form').submit();
@@ -79,7 +81,7 @@
 
                                         <form id="delete-form" action="{{ route('movie.destroy',[$movie->id]) }}" 
                                             method="POST" style="display: none;">
-                                                    <input type="hidden" name="_method" value="delete">
+                                                    <input type="hidden" name="_method" value="delete">  
                                                     {{ csrf_field() }}
                                         </form>
                                     </li>

@@ -30,24 +30,26 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         if(Auth::check()) {
-            // $this->validate($request, [
-            //     'title' => 'required',
-            //     'name' => 'required',
-            //     'address' => 'required',
-            //     'postcode' => 'required'
-            // ]);
+            $this->validate($request, [
+                'title' => 'min:2|max:20',
+                'synopsis' => 'min:20|max:100'
+                //'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
+                // 'address' => 'required',
+                // 'postcode' => 'required'
+            ]);
 
             $genreName = Common::$genre[$request['genre']];
             $movieYear = Common::$years[$request['year']];
 
             $movie = new Movie;
             $movie->fill($request->all());
-            $movie->genre = $genreName;
-            $movie->year = $movieYear;
+            $movie->fullGenre = $genreName;
+            $movie->fullYear = $movieYear;
             $movie->save();
 
+            $movieTitle = str_replace(' ', '', $request['title']);
             $file = $request->file('image');
-            $filename = $request['title'] . '-' . $genreName . '.jpg';
+            $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
             if($file) {
                 if($filename)
                     Storage::disk('public')->put($filename, file_get_contents($file));
@@ -63,11 +65,12 @@ class MovieController extends Controller
     public function show($id)
     {
         $movie = Movie::find($id);
-        $file_name = $movie->title . '-' . $movie->genre . '.jpg';
+        $movieTitle = str_replace(' ', '', $movie->title);
+        $file_name = $movieTitle . '-' . $movie->genre . '.jpg';
         $filename = Storage::url($file_name);
         if(!$movie) throw new ModelNotFoundException;
 
-        return view('movies.show', ['movie' => $movie, 'filename' => $filename]);
+        return view('movies.show', ['movie' => $movie, 'filename' => $filename, 'movieTitle' => $movieTitle]);
     }
 
     public function edit($id)
@@ -92,13 +95,15 @@ class MovieController extends Controller
         ->with('success', 'Movie was updated successfully');
     }
 
-    public function destroy($movieId) 
+    public function destroy($id) 
     {
-        $findMovie = Movie::find($movieId);
+        $findMovie = Movie::find($id);
         if($findMovie->delete()) {
-            var_dump($movieId);
+            var_dump($id);
             // return redirect()->route('movie.index')
             // ->with('success', 'Movie was deleted successfully');
         }
+
+        //return back()->withInput()->with('error', 'Movie could not be deleted');
     }
 }

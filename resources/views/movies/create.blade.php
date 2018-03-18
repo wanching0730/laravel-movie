@@ -16,9 +16,14 @@ use App\Common;
         var year = document.forms['myForm']['year'].value;
         var synopsis = document.forms['myForm']['synopsis'].value;
         var image = document.forms['myForm']['image'].value;
+        var extension = image.substring(
+                    image.lastIndexOf('.') + 1).toLowerCase();
 
-        if(title=="" || genre=="" || year=="" || synopsis=="") {
+        if(title=="" || genre=="" || year=="" || synopsis=="" || image=="") {
             alert("Please complete all fields");
+            return false;
+        } else if(extension != "jpg") {
+            alert("Photo only allows file type of .JPG");
             return false;
         }
     }
@@ -88,7 +93,7 @@ use App\Common;
             </div>
 
             <div class="form-group row">
-                {!! Form::label('movie-image', 'Poster (only .jpg)', [
+                {!! Form::label('movie-image', 'Poster (Only .jpg file)', [
                         'class' => 'control-label col-sm-3',
                     ]) !!}
 

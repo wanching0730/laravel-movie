@@ -13,8 +13,9 @@
         var genre = document.forms['myForm']['genre'].value;
         var year = document.forms['myForm']['year'].value;
         var synopsis = document.forms['myForm']['synopsis'].value;
+        var image = document.forms['myForm']['image'].value;
 
-        if(title=="" || genre=="" || year=="" || synopsis=="") {
+        if(title=="" || genre=="" || year=="" || synopsis=="" || image=="") {
             alert("Please complete all fields");
             return false;
         }
@@ -73,7 +74,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <textarea name="synopsis" value="{{$movie->synopsis}}" cols="40" rows="5"></textarea>
+                    <textarea name="synopsis" value="{{ $movie->synopsis }}" cols="40" rows="5"></textarea>
                 </div>
             </div>
 
