@@ -60,6 +60,7 @@
           .sidenav {padding-top: 15px;}
           .sidenav a {font-size: 18px;}
         }
+
     </style>
 
 </head>
@@ -90,17 +91,15 @@
                 @endguest
             </div>
 
-           
             <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">
-            @guest
-                &#9776; 
-            @else
-                &#9776; {{ Auth::user()->name }}
-            @endguest
+                @guest
+                    &#9776; 
+                @else
+                    &#9776; {{ Auth::user()->name }}
+                @endguest
             
             </span>
             
-
             <script>
                 function openNav() {
                     document.getElementById("mySidenav").style.width = "250px";

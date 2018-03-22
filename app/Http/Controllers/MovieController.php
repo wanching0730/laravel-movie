@@ -85,6 +85,7 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $movie = Movie::find($id);
+        
         if(!$movie)
             throw new ModelNotFoundException;
 
@@ -96,6 +97,14 @@ class MovieController extends Controller
         $movie->fullYear = $movieYear;
         $movie->save();
 
+        $movieTitle = str_replace(' ', '', $request['title']);
+        $file = $request->file('image');
+        $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
+        if($file) {
+            if($filename)
+                Storage::disk('public')->put($filename, file_get_contents($file));
+        }
+
         return redirect()->route('movie.index')
         ->with('success', 'Movie was updated successfully');
     }
@@ -103,13 +112,13 @@ class MovieController extends Controller
     public function destroy($id) 
     {
         $findMovie = Movie::find($id);
-        var_dump($findMovie);
-        // if($findMovie->delete()) {
-        //     return redirect()->route('movie.index')
-        //     ->with('success', 'Movie was deleted successfully');
-        // }
+        // var_dump($findMovie);
+        if($findMovie->delete()) {
+            return redirect()->route('movie.index')
+            ->with('success', 'Movie was deleted successfully');
+        }
 
-        // return back()->withInput()->with('error', 'Movie could not be deleted');
+        return back()->withInput()->with('error', 'Movie could not be deleted');
     }
 
     public function getMovieBySort($sort) {
