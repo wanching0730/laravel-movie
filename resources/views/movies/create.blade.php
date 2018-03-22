@@ -39,7 +39,7 @@ use App\Common;
         <div class="row  col-md-12 col-lg-12 col-sm-12">
 
             <form name="myForm" method="post" action="{{ route('movie.store') }}" onSubmit="return validate()" enctype="multipart/form-data">
-                                {{ csrf_field() }}
+                {{ csrf_field() }}
 
             <div class="form-group row">
                 {!! Form::label('movie-title', 'Title', [

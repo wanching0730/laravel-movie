@@ -103,13 +103,13 @@ class MovieController extends Controller
     public function destroy($id) 
     {
         $findMovie = Movie::find($id);
-        if($findMovie->delete()) {
-            var_dump($id);
-            // return redirect()->route('movie.index')
-            // ->with('success', 'Movie was deleted successfully');
-        }
+        var_dump($findMovie);
+        // if($findMovie->delete()) {
+        //     return redirect()->route('movie.index')
+        //     ->with('success', 'Movie was deleted successfully');
+        // }
 
-        //return back()->withInput()->with('error', 'Movie could not be deleted');
+        // return back()->withInput()->with('error', 'Movie could not be deleted');
     }
 
     public function getMovieBySort($sort) {
