@@ -80,6 +80,9 @@
                 No records found
             </div>
         @endif
+
+        <a href="/movie" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="text-align: center;">Back</a>
+
     </div>
 @endsection
 
