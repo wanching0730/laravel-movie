@@ -88,7 +88,12 @@ class MovieController extends Controller
         if(!$movie)
             throw new ModelNotFoundException;
 
+        $genreName = Common::$genre[$request['genre']];
+        $movieYear = Common::$years[$request['year']];
+
         $movie->fill($request->all());
+        $movie->fullGenre = $genreName;
+        $movie->fullYear = $movieYear;
         $movie->save();
 
         return redirect()->route('movie.index')
@@ -105,5 +110,13 @@ class MovieController extends Controller
         }
 
         //return back()->withInput()->with('error', 'Movie could not be deleted');
+    }
+
+    public function getMovieByYear($year) {
+
+        $movies = Movie::where('fullYear', $year)->get();
+        
+        return view('movies.showYear', ['movies' => $movies]);
+
     }
 }

@@ -6,22 +6,27 @@
 
 @section('content')
 
-<script>
+    <script>
 
-    function validate() {
-        var title = document.forms['myForm']['title'].value;
-        var genre = document.forms['myForm']['genre'].value;
-        var year = document.forms['myForm']['year'].value;
-        var synopsis = document.forms['myForm']['synopsis'].value;
-        var image = document.forms['myForm']['image'].value;
+        function validate() {
+            var title = document.forms['myForm']['title'].value;
+            var genre = document.forms['myForm']['genre'].value;
+            var year = document.forms['myForm']['year'].value;
+            var synopsis = document.forms['myForm']['synopsis'].value;
+            var image = document.forms['myForm']['image'].value;
+            var extension = image.substring(
+                        image.lastIndexOf('.') + 1).toLowerCase();
 
-        if(title=="" || genre=="" || year=="" || synopsis=="" || image=="") {
-            alert("Please complete all fields");
-            return false;
+            if(title=="" || genre=="" || year=="" || synopsis=="" || image=="") {
+                alert("Please complete all fields");
+                return false;
+            } else if(extension != "jpg") {
+                alert("Photo only allows file type of .JPG");
+                return false;
+            }
         }
-    }
 
-</script>
+    </script>
 
     <div class="panel-body">
 
