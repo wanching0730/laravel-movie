@@ -38,7 +38,7 @@
         </div>
 
         <div class="jumbotron">
-            <h1 class="display-4" style="text-align: center;">{{ $movie->title }}</h1>
+            <h1 class="display-4" style="text-align: center; color: black;">{{ $movie->title }}</h1>
         </div>
 
         <div class="col-md-5 col-lg-5 col-sm-5 pull-left">
@@ -49,10 +49,10 @@
 
         <div class="col-md-7 col-lg-7 col-sm-7 pull-right">
             <div id="movie-details">
-                <table class="table table-stripped" border="1">
+                <table class="table table-stripped" border="1" style="font-size: 16px; color: white">
                     <thead>
                         <tr>
-                            <th>Attribute</th>
+                            <th>Item</th>
                             <th>Value</th>
                         </tr>
                     </thead>

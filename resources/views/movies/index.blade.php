@@ -8,30 +8,86 @@
     <script src="main.js"></script>
 
     <style>
-        .btn-group button {
-            background-color: #4CAF50; /* Green background */
-            border: 1px solid green; /* Green border */
-            color: white; /* White text */
-            padding: 10px 24px; /* Some padding */
-            cursor: pointer; /* Pointer/hand icon */
-            float: left; /* Float the buttons side by side */
+
+        *,
+        *::before,
+        *::after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
         }
 
-        /* Clear floats (clearfix hack) */
-        .btn-group:after {
-            content: "";
-            clear: both;
-            display: table;
+        .dark {
+        background:#24252A;
         }
 
-        .btn-group button:not(:last-child) {
-            border-right: none; /* Prevent double borders */
+        .flex {
+        min-height:50vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
         }
 
-        /* Add a background color on hover */
-        .btn-group button:hover {
-            background-color: #3e8e41;
+        a.btn-dark {
+        color:pink;
+        text-decoration:none;
+        -webkit-transition:0.3s all ease;
+        transition:0.3s ease all;
+        &:hover {
+            color:#FFF;
         }
+        &:focus {
+            color:#FFF;
+        }
+        }
+
+        .btn-dark {
+        font-size:12px;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        display:inline-block;
+        text-align:center;
+        width:100px;
+        font-weight:bold;
+        padding:6px 0px;
+        border:1px solid pink;
+        border-radius:2px;
+        position:relative;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);
+        z-index:2;
+        &:before {
+            -webkit-transition:0.5s all ease;
+            transition:0.5s all ease;
+            position:absolute;
+            top:0;
+            left:50%;
+            right:50%;
+            bottom:0;
+            opacity:0;
+            content:'';
+            background-color:$second;
+            z-index:-1;
+        }
+        &:hover {
+            &:before {
+            -webkit-transition:0.5s all ease;
+            transition:0.5s all ease;
+            left:0;
+            right:0;
+            opacity:1;
+            }
+        }
+        &:focus {
+            &:before {
+            -webkit-transition:0.5s all ease;
+            transition:0.5s all ease;
+            left:0;
+            right:0;
+            opacity:1;
+            }
+        }
+        }
+
     </style>
 
 </head>
@@ -57,13 +113,16 @@
 
         <div class="btn-group" style="width:100%">
             @for($i = 2009; $i <= 2018; $i++)
-                <a href="/movie/sort/{{ $i }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">{{ $i }}</a>
+                <a href="/movie/sort/{{ $i }}" class="btn-dark">{{ $i }}</a>
             @endfor
         </div>
 
-        <a href="/movie/sort/{{'title'}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">By Title</a>
-        <a href="/movie/sort/{{'year'}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">By Year</a>
+        <br></br>
 
+        <a href="/movie/sort/{{'title'}}" class="btn-dark" style="border: 1px solid purple;">By Title</a>
+        <a href="/movie/sort/{{'year'}}" class="btn-dark" style="border: 1px solid purple;">By Year</a>
+
+        <br></br>
 
         @if(Auth::check())
             <div class="panel-heading"><a  class="pull-right btn btn-primary btn-sm" href="/movie/create">
@@ -74,7 +133,7 @@
 
         <div class="panel-body">
             @if(count($movies) > 0)
-                <table class="table table-hover table-dark" border="1" style="text-align: center;">
+                <table class="table table-hover table-dark" border="1" style="text-align: center; color: white; font-size: 16px;">
                     <thead>
                         <tr>
                             <th style="text-align: center;">No.</th>

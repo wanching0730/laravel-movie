@@ -8,7 +8,7 @@
 
     <div class="panel-body">
         @if(count($movies) > 0)
-            <table class="table table-hover table-dark" border="1" style="text-align: center;">
+            <table class="table table-hover table-dark" border="1" style="text-align: center; font-size: 16px; color: white;">
                 <thead>
                     <tr>
                         <th style="text-align: center;">No.</th>

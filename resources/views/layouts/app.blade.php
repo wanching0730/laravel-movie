@@ -17,7 +17,12 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     <style>
-        body {
+        body.guest {
+            font-family: "Lato", sans-serif;
+            background-color: black;
+        }
+
+        body.auth {
             font-family: "Lato", sans-serif;
             background-color: white;
         }
@@ -65,7 +70,12 @@
 
 </head>
 
-<body>
+@guest
+    <body class="guest">
+@else
+    <body class="auth">
+@endguest
+
     <div id="app">
         <nav class="navbar navbar-light navbar-static-top" style="background-color: black;">
             <div class="container">
