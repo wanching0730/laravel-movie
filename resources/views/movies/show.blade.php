@@ -49,70 +49,38 @@
 
         <div class="col-md-7 col-lg-7 col-sm-7 pull-right">
             <div id="movie-details">
-                <table class="table table-stripped" border="1" style="font-size: 16px; color: white">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
+                @guest
+                    <table class="table table-stripped" border="1" style="font-size: 16px; color: white">
+                @else   
+                    <table class="table table-stripped" border="1" style="font-size: 16px; color: grey">
+                @endguest
 
-                    <tbody>
-                        <tr>
-                            <td>Genre</td>
-                            <td>{{ $movie->genre }}</td>
-                        </tr>
-                        <tr>
-                            <td>Year</td>
-                            <td>{{ $movie->year }}</td>
-                        </tr>
-                        <tr>
-                            <td>Synopsis</td>
-                            <td>{!!  nl2br($movie->synopsis) !!}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Genre</td>
+                                <td>{{ $movie->genre }}</td>
+                            </tr>
+                            <tr>
+                                <td>Year</td>
+                                <td>{{ $movie->year }}</td>
+                            </tr>
+                            <tr>
+                                <td>Synopsis</td>
+                                <td>{!!  nl2br($movie->synopsis) !!}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
-        <!-- <div class="panel-body">
-            <table class="table table-stripped" border="1">
-                <thead>
-                    <tr>
-                        <th>Attribute</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Title</td>
-                        <td>{{ $movie->title }}</td>
-                    </tr>
-                    <tr>
-                        <td>Genre</td>
-                        <td>{{ $movie->genre }}</td>
-                    </tr>
-                    <tr>
-                        <td>Year</td>
-                        <td>{{ $movie->year }}</td>
-                    </tr>
-                    <tr>
-                        <td>Synopsis</td>
-                        <td>{!!  nl2br($movie->synopsis) !!}</td>
-                    </tr>
-                    <tr>
-                        <td>Image</td>
-                        <td>
-                            @if(Storage::disk('public')->has($movieTitle . '-' . $movie->genre . '.jpg'))
-                                <img src="{{ $filename }}" style="height:50px; width:50px;"> 
-                            @endif
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
 
     @endsection
 

@@ -76,12 +76,17 @@
                 </tbody>
             </table>
         @else
-            <div>
+            <script>
+                alert("No movie found")
+            </script>
+
+            <div style="font-size: 18px;">
                 No records found
+                <br></br>
             </div>
         @endif
 
-        <a href="/movie" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="text-align: center;">Back</a>
+        <a href="/movie" class="btn btn-primary btn-lg active" style="text-align: center;">Back</a>
 
     </div>
 @endsection

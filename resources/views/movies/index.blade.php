@@ -113,7 +113,11 @@
 
         <div class="btn-group" style="width:100%">
             @for($i = 2009; $i <= 2018; $i++)
-                <a href="/movie/sort/{{ $i }}" class="btn-dark">{{ $i }}</a>
+                @guest
+                    <a href="/movie/sort/{{ $i }}" class="btn-dark">{{ $i }}</a>
+                @else
+                    <a href="/movie/sort/{{ $i }}" class="btn-dark" style="border: 1px solid red;">{{ $i }}</a>
+                @endguest
             @endfor
         </div>
 
@@ -133,7 +137,11 @@
 
         <div class="panel-body">
             @if(count($movies) > 0)
-                <table class="table table-hover table-dark" border="1" style="text-align: center; color: white; font-size: 16px;">
+                @guest
+                    <table class="table table-hover table-dark" border="1" style="text-align: center; color: white; font-size: 16px;">
+                @else 
+                    <table class="table table-hover table-dark" border="1" style="text-align: center; color: grey; font-size: 16px;">
+                @endguest
                     <thead>
                         <tr>
                             <th style="text-align: center;">No.</th>
@@ -201,7 +209,7 @@
                     </tbody>
                 </table>
             @else
-                <div>
+                <div style="font-size: 18px;">
                     No records found
                 </div>
             @endif
