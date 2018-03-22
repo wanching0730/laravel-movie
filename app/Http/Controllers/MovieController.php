@@ -99,14 +99,15 @@ class MovieController extends Controller
 
         $movieTitle = str_replace(' ', '', $request['title']);
         $file = $request->file('image');
+        var_dump($file);
         $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
         if($file) {
             if($filename)
                 Storage::disk('public')->put($filename, file_get_contents($file));
         }
 
-        return redirect()->route('movie.index')
-        ->with('success', 'Movie was updated successfully');
+        // return redirect()->route('movie.index')
+        // ->with('success', 'Movie was updated successfully');
     }
 
     public function destroy($id) 

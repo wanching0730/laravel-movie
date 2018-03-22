@@ -30,89 +30,94 @@
 
     <div class="panel-body">
 
-        <form name="myForm" method="post" action="{{ route('movie.update', [$movie->id]) }}" onSubmit="return validate()">
-                                    {{ csrf_field() }}
+        <h1 align="center">Create New Movie</h1>
 
-            <div class="form-group row">
-                {!! Form::label('movie-title', 'Title', [
-                    'class' => 'control-label col-sm-3',
-                ]) !!}
+        <div class="row  col-md-12 col-lg-12 col-sm-12">
 
-                <div class="col-sm-9">
-                    {!! Form::text('title', $movie->title, [
-                        'id' => 'movie-title',
-                        'class' => 'form-control',
-                        'maxlength' => 20,
-                    ]) !!}
-                </div>
-            </div>
+            <form name="myForm" method="post" action="{{ route('movie.update', [$movie->id]) }}" onSubmit="return validate()" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
 
-           <div class="form-group row">
-                {!! Form::label('movie-genre', 'Genre', [
-                    'class' => 'control-label col-sm-3',
-                ]) !!}
-
-                <div class="col-sm-9">
-                    {!! Form::select('genre', Common::$genre, $movie->genre, [
-                        'class' => 'form-control',
-                        'placeholder' => '- Select Genre -',
-                    ]) !!}
-                </div>
-            </div>   
-
-            <div class="form-group row">
-                {!! Form::label('movie-year', 'Years', [
-                    'class' => 'control-label col-sm-3',
-                ]) !!}
-
-                <div class="col-sm-9">
-                    {!! Form::select('year', Common::$years, $movie->year, [
-                        'class' => 'form-control',
-                        'placeholder' => '- Select Year -',
-                    ]) !!}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="control-label col-sm-3">
-                    <label>Synopsis</label>
-                </div>
-
-                <div class="col-sm-9">
-                    <textarea name="synopsis" value="{{ $movie->synopsis }}" cols="40" rows="5"></textarea>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                {!! Form::label('movie-image', 'Poster (Only .jpg file)', [
+                <div class="form-group row">
+                    {!! Form::label('movie-title', 'Title', [
                         'class' => 'control-label col-sm-3',
                     ]) !!}
 
-                <div class="col-sm-9">
-                    {!! Form::file('image') !!}
+                    <div class="col-sm-9">
+                        {!! Form::text('title', $movie->title, [
+                            'id' => 'movie-title',
+                            'class' => 'form-control',
+                            'maxlength' => 20,
+                        ]) !!}
+                    </div>
                 </div>
-            </div>
 
-             <!-- <div class="form-group row">
-                {!! Form::label('movie-image', 'Poster', [
+            <div class="form-group row">
+                    {!! Form::label('movie-genre', 'Genre', [
                         'class' => 'control-label col-sm-3',
                     ]) !!}
 
-                <div class="col-sm-9">
-                    {!! Form::file('image', array('class' => 'image')) !!}
-                </div>
-            </div> -->
+                    <div class="col-sm-9">
+                        {!! Form::select('genre', Common::$genre, $movie->genre, [
+                            'class' => 'form-control',
+                            'placeholder' => '- Select Genre -',
+                        ]) !!}
+                    </div>
+                </div>   
 
-            <div class="form-group row">
-                <div class="col-sm-offset-3 col-sm-6">
-                    {!! Form::button('Update', [
-                        'type' => 'submit',
-                        'class' => 'btn btn-primary',
+                <div class="form-group row">
+                    {!! Form::label('movie-year', 'Years', [
+                        'class' => 'control-label col-sm-3',
                     ]) !!}
-                </div>
-            </div>
 
-        </form>
+                    <div class="col-sm-9">
+                        {!! Form::select('year', Common::$years, $movie->year, [
+                            'class' => 'form-control',
+                            'placeholder' => '- Select Year -',
+                        ]) !!}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="control-label col-sm-3">
+                        <label>Synopsis</label>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <textarea name="synopsis" value="{{ $movie->synopsis }}" cols="40" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {!! Form::label('movie-image', 'Poster (Only .jpg file)', [
+                            'class' => 'control-label col-sm-3',
+                        ]) !!}
+
+                    <div class="col-sm-9">
+                        {!! Form::file('image') !!}
+                    </div>
+                </div>
+
+                <!-- <div class="form-group row">
+                    {!! Form::label('movie-image', 'Poster', [
+                            'class' => 'control-label col-sm-3',
+                        ]) !!}
+
+                    <div class="col-sm-9">
+                        {!! Form::file('image', array('class' => 'image')) !!}
+                    </div>
+                </div> -->
+
+                <div class="form-group row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        {!! Form::button('Update', [
+                            'type' => 'submit',
+                            'class' => 'btn btn-primary',
+                        ]) !!}
+                    </div>
+                </div>
+
+            </form>
+        </div>
 
     </div>
     
