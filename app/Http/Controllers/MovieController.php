@@ -112,9 +112,14 @@ class MovieController extends Controller
         //return back()->withInput()->with('error', 'Movie could not be deleted');
     }
 
-    public function getMovieByYear($year) {
+    public function getMovieBySort($sort) {
 
-        $movies = Movie::where('fullYear', $year)->get();
+        if($sort == 'title') 
+            $movies = Movie::orderBy('title', 'asc')->get();
+        else if($sort == 'year')
+            $movies = Movie::orderBy('fullYear', 'desc')->get();
+        else 
+            $movies = Movie::where('fullYear', $sort)->get();
         
         return view('movies.showYear', ['movies' => $movies]);
 

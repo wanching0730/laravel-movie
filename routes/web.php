@@ -29,5 +29,6 @@ Route::get('/movie/edit/{id}', 'MovieController@edit')->name('movie.edit');
 Route::post('/movie/update/{id}', 'MovieController@update')->name('movie.update');
 Route::delete('/movie/{id}', 'MovieController@destroy')->name('movie.destroy');
 //Route::get('/movieimage/{filename}', 'MovieController@getMovieImage')->name('movie.image');
-Route::get('/movie/year/{year}', 'MovieController@getMovieByYear')->name('movie.year');
+Route::get('/movie/sort/{sort}', 'MovieController@getMovieBySort')->name('movie.sort');
+
 

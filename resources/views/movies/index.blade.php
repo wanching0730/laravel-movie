@@ -56,17 +56,21 @@
         </div>
 
         <div class="btn-group" style="width:100%">
-            <a href="/movie/year/{{2009}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2009</a>
-            <a href="/movie/year/{{2010}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2010</a>
-            <a href="/movie/year/{{2011}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2011</a>
-            <a href="/movie/year/{{2012}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2012</a>
-            <a href="/movie/year/{{2013}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2013</a>
-            <a href="/movie/year/{{2014}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2014</a>
-            <a href="/movie/year/{{2015}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2015</a>
-            <a href="/movie/year/{{2016}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2016</a>
-            <a href="/movie/year/{{2017}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2017</a>
-            <a href="/movie/year/{{2018}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2018</a>
+            <a href="/movie/sort/{{2009}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2009</a>
+            <a href="/movie/sort/{{2010}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2010</a>
+            <a href="/movie/sort/{{2011}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2011</a>
+            <a href="/movie/sort/{{2012}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2012</a>
+            <a href="/movie/sort/{{2013}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2013</a>
+            <a href="/movie/sort/{{2014}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2014</a>
+            <a href="/movie/sort/{{2015}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2015</a>
+            <a href="/movie/sort/{{2016}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2016</a>
+            <a href="/movie/sort/{{2017}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2017</a>
+            <a href="/movie/sort/{{2018}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">2018</a>
         </div>
+
+        <a href="/movie/sort/{{'title'}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">By Title</a>
+        <a href="/movie/sort/{{'year'}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">By Year</a>
+
 
         @if(Auth::check())
             <div class="panel-heading"><a  class="pull-right btn btn-primary btn-sm" href="/movie/create">
