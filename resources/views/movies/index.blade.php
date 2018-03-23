@@ -125,7 +125,7 @@
 
         <a href="/movie/sort/{{'title'}}" class="btn-dark" style="border: 1px solid purple;">By Title</a>
         <a href="/movie/sort/{{'year'}}" class="btn-dark" style="border: 1px solid purple;">By Year</a>
-
+        <a href="/movie/sort/{{'fullGenre'}}" class="btn-dark" style="border: 1px solid purple;">By Genre</a>
         <br></br>
 
         @if(Auth::check())

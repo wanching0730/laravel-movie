@@ -8,7 +8,12 @@
 
     <div class="panel-body">
         @if(count($movies) > 0)
-            <table class="table table-hover table-dark" border="1" style="text-align: center; font-size: 16px; color: white;">
+                @guest
+                    <table class="table table-hover table-dark" border="1" style="text-align: center; color: white; font-size: 16px;">
+                @else 
+                    <table class="table table-hover table-dark" border="1" style="text-align: center; color: grey; font-size: 16px;">
+                @endguest
+                
                 <thead>
                     <tr>
                         <th style="text-align: center;">No.</th>

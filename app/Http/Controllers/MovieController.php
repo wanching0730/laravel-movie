@@ -128,6 +128,8 @@ class MovieController extends Controller
             $movies = Movie::orderBy('title', 'asc')->get();
         else if($sort == 'year')
             $movies = Movie::orderBy('fullYear', 'desc')->get();
+        else if($sort == 'fullGenre')
+            $movies = Movie::orderBy('fullGenre', 'asc')->get();
         else 
             $movies = Movie::where('fullYear', $sort)->get();
         
