@@ -85,30 +85,39 @@ class MovieController extends Controller
 
     public function update(Request $request, $id)
     {
-        $movie = Movie::find($id);
-        
-        if(!$movie)
-            throw new ModelNotFoundException;
 
-        $genreName = Common::$genre[$request['genre']];
-        $movieYear = Common::$years[$request['year']];
+        if(Auth::check()) {
 
-        $movie->fill($request->all());
-        $movie->fullGenre = $genreName;
-        $movie->fullYear = $movieYear;
-        $movie->save();
+            $this->validate($request, [
+                'title' => 'min:2|max:20',
+                'synopsis' => 'min:20|max:100'
+            ]);
 
-        $movieTitle = str_replace(' ', '', $request['title']);
-        $file = $request->file('image');
-        var_dump($file);
-        $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
-        if($file) {
-            if($filename)
-                Storage::disk('public')->put($filename, file_get_contents($file));
+            $movie = Movie::find($id);
+            
+            if(!$movie)
+                throw new ModelNotFoundException;
+
+            $genreName = Common::$genre[$request['genre']];
+            $movieYear = Common::$years[$request['year']];
+
+            $movie->fill($request->all());
+            $movie->fullGenre = $genreName;
+            $movie->fullYear = $movieYear;
+            $movie->save();
+
+            $movieTitle = str_replace(' ', '', $request['title']);
+            $file = $request->file('image');
+            var_dump($file);
+            $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
+            if($file) {
+                if($filename)
+                    Storage::disk('public')->put($filename, file_get_contents($file));
+            }
+
+            return redirect()->route('movie.index')
+            ->with('success', 'Movie was updated successfully');
         }
-
-        return redirect()->route('movie.index')
-        ->with('success', 'Movie was updated successfully');
     }
 
     // public function destroy($id) 
