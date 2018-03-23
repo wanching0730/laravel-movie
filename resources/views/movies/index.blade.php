@@ -202,7 +202,7 @@
                             <th style="text-align: center;">Genre</th>
                             <th style="text-align: center;">Year</th>
                             @if(Auth::check())
-                                <th colspan="2" style="text-align: center;">Actions</th>
+                                <th style="text-align: center;">Actions</th>
                             @endif
                         </tr>
                     </thead>
@@ -239,7 +239,7 @@
                                             <a href="/movie/edit/{{ $movie->id }}"><i class="fas fa-edit"></i> Edit</a></li>
                                         </li>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <li>
                                             <a   
                                             href="#"
@@ -252,13 +252,13 @@
                                                         "
                                                         ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
-                                            <!-- <form id="delete-form" action="{{ route('movie.destroy',[$movie->id]) }}" 
+                                            <form id="delete-form" action="{{ route('movie.destroy',[$movie->id]) }}" 
                                                 method="POST" style="display: none;">
                                                         <input type="hidden" name="_method" value="delete">  
                                                         {{ csrf_field() }}
-                                            </form> -->
+                                            </form>
                                         </li>
-                                    </td>
+                                    </td> -->
                                 @endif
                             </tr>
                         @endforeach
@@ -271,7 +271,9 @@
             @endif
         </div>
         @if(Auth::check())
-            <button type="submit" class="btn btn-danger">Delete Selected </button>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-danger">Delete Selected </button>
+            </div>
         @endif
         </form>
     @endsection
