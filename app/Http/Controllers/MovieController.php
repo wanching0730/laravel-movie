@@ -107,8 +107,8 @@ class MovieController extends Controller
                 Storage::disk('public')->put($filename, file_get_contents($file));
         }
 
-        // return redirect()->route('movie.index')
-        // ->with('success', 'Movie was updated successfully');
+        return redirect()->route('movie.index')
+        ->with('success', 'Movie was updated successfully');
     }
 
     public function destroy($id) 
