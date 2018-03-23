@@ -128,6 +128,14 @@
         <a href="/movie/sort/{{'fullGenre'}}" class="btn-dark" style="border: 1px solid purple;">By Genre</a>
         <br></br>
 
+         <div class="search-container">
+            <form action="/movie/search" method="POST" role="search">
+                {{ csrf_field() }}
+                <input type="text" placeholder="Search.." name="search" style="border: 1px solid pink;">
+                <button type="submit" style="border: 1px solid pink;">Go</button>
+            </form>
+        </div>
+
         @if(Auth::check())
             <div class="panel-heading"><a  class="pull-right btn btn-primary btn-sm" href="/movie/create">
             <i class="fa fa-plus-square" aria-hidden="true"></i>  Add New Movie</a> </div>
@@ -147,7 +155,9 @@
                 @endguest
                     <thead>
                         <tr>
-                            <th width="50px"><input type="checkbox" id="master"></th>                            
+                            @if(Auth::check())
+                                <th width="50px"></th>
+                            @endif                           
                             <th style="text-align: center;">No.</th>
                             <th style="text-align: center;">Title</th>
                             <th style="text-align: center;">Genre</th>
@@ -161,7 +171,9 @@
                     <tbody>
                         @foreach($movies as $i => $movie)
                             <tr>
-                                <td><input type="checkbox" name="delid[]"  value="{{ $movie->id }}"></td>
+                                @if(Auth::check())
+                                    <td><input type="checkbox" name="delid[]"  value="{{ $movie->id }}"></td>
+                                @endif
                                 <td class="table-text">
                                     <div>{{ $i+1 }}</div>
                                 </td>
@@ -219,7 +231,9 @@
                 </div>
             @endif
         </div>
-        <button type="submit" class="btn btn-danger">Delete Selected </button>
+        @if(Auth::check())
+            <button type="submit" class="btn btn-danger">Delete Selected </button>
+        @endif
         </form>
     @endsection
 

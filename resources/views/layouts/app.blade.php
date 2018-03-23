@@ -124,16 +124,6 @@
             <!-- Right Side Of Navbar-->
             <ul class="nav navbar-nav navbar-right">
 
-                <li>
-                    <div class="search-container">
-                        <form action="/movie/search" method="POST" role="search">
-                            {{ csrf_field() }}
-                            <input type="text" placeholder="Search.." name="search">
-                            <button type="submit">Go</button>
-                        </form>
-                    </div>
-                </li>
-
                 <!-- Authentication Links -->
                 @guest
                     <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></i> Login</a></li>
