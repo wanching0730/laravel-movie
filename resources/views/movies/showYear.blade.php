@@ -6,6 +6,9 @@
 
 @section('content')
 
+<form action="{{ route('movie.deleteAll') }}" method="post">
+            {{ csrf_field() }}
+
     <div class="panel-body">
         @if(count($movies) > 0)
                 @guest
@@ -16,12 +19,15 @@
                 
                 <thead>
                     <tr>
+                        @if(Auth::check())
+                            <th width="50px"></th>
+                        @endif
                         <th style="text-align: center;">No.</th>
                         <th style="text-align: center;">Title</th>
                         <th style="text-align: center;">Genre</th>
                         <th style="text-align: center;">Year</th>
                         @if(Auth::check())
-                            <th colspan="2" style="text-align: center;">Actions</th>
+                            <th style="text-align: center;">Actions</th>
                         @endif
                     </tr>
                 </thead>
@@ -29,6 +35,9 @@
                 <tbody>
                     @foreach($movies as $i => $movie)
                         <tr>
+                            @if(Auth::check())
+                                <td><input type="checkbox" name="delid[]"  value="{{ $movie->id }}"></td>
+                            @endif
                             <td class="table-text">
                                 <div>{{ $i+1 }}</div>
                             </td>
@@ -55,7 +64,7 @@
                                         <a href="/movie/edit/{{ $movie->id }}"><i class="fas fa-edit"></i> Edit</a></li>
                                     </li>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <li>
                                         <a   
                                         href="#"
@@ -74,7 +83,7 @@
                                                     {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </td>
+                                </td> -->
                             @endif
                         </tr>
                     @endforeach
@@ -85,15 +94,21 @@
                 alert("No movie found")
             </script>
 
-            <div style="font-size: 18px;">
+            <div style="font-size: 20px; text-align: center;">
                 No records found
                 <br></br>
             </div>
         @endif
 
-        <div style="text-align: center;">
-            <a href="/movie" class="btn btn-primary btn-lg active">Back</a>
-        </div>
+         
+            <div style="text-align: center;">
+                @if(Auth::check())
+                    <button type="submit" class="btn btn-danger">Delete Selected </button>
+                @endif
+                <a href="/movie" class="btn btn-primary active">Back</a>
+            </div>
+       
+        </form>
 
     </div>
 @endsection

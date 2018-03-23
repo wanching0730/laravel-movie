@@ -265,7 +265,7 @@
                     </tbody>
                 </table>
             @else
-                <div style="font-size: 18px;">
+                <div style="font-size: 20px; text-align: center;">
                     No records found
                 </div>
             @endif
