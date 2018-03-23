@@ -124,13 +124,15 @@
             <!-- Right Side Of Navbar-->
             <ul class="nav navbar-nav navbar-right">
 
-            <div class="search-container">
-                <form action="/movie/search" method="POST" role="search">
-                    {{ csrf_field() }}
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+                <li>
+                    <div class="search-container">
+                        <form action="/movie/search" method="POST" role="search">
+                            {{ csrf_field() }}
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit">Go</button>
+                        </form>
+                    </div>
+                </li>
 
                 <!-- Authentication Links -->
                 @guest

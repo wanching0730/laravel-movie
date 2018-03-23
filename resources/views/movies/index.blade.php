@@ -135,6 +135,9 @@
 
         </br>
 
+        <form action="{{ route('movie.deleteAll') }}" method="post">
+            {{ csrf_field() }}
+
         <div class="panel-body">
             @if(count($movies) > 0)
                 @guest
@@ -144,6 +147,7 @@
                 @endguest
                     <thead>
                         <tr>
+                            <th width="50px"><input type="checkbox" id="master"></th>                            
                             <th style="text-align: center;">No.</th>
                             <th style="text-align: center;">Title</th>
                             <th style="text-align: center;">Genre</th>
@@ -157,6 +161,7 @@
                     <tbody>
                         @foreach($movies as $i => $movie)
                             <tr>
+                                <td><input type="checkbox" name="delid[]"  value="{{ $movie->id }}"></td>
                                 <td class="table-text">
                                     <div>{{ $i+1 }}</div>
                                 </td>
@@ -196,11 +201,11 @@
                                                         "
                                                         ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
-                                            <form id="delete-form" action="{{ route('movie.destroy',[$movie->id]) }}" 
+                                            <!-- <form id="delete-form" action="{{ route('movie.destroy',[$movie->id]) }}" 
                                                 method="POST" style="display: none;">
                                                         <input type="hidden" name="_method" value="delete">  
                                                         {{ csrf_field() }}
-                                            </form>
+                                            </form> -->
                                         </li>
                                     </td>
                                 @endif
@@ -214,6 +219,8 @@
                 </div>
             @endif
         </div>
+        <button type="submit" class="btn btn-danger">Delete Selected </button>
+        </form>
     @endsection
 
 </body>

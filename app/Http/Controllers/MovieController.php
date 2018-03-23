@@ -113,7 +113,7 @@ class MovieController extends Controller
 
     public function destroy($id) 
     {
-        $findMovie = Movie::find($id);
+        $findMovie = Movie::find($id)->first();
         // var_dump($findMovie);
         if($findMovie->delete()) {
             return redirect()->route('movie.index')
@@ -149,5 +149,17 @@ class MovieController extends Controller
             $movies = Movie::where('fullGenre', $search)->get(); 
                  
         return view('movies.showYear', ['movies' => $movies]);
+    }
+
+    public function deleteAll(Request $request) {
+        // $ids = $request->ids;
+        // Movie::whereIn('id', explode(",", $ids))->delete();
+
+        $delid = $request->input('delid');
+        var_dump($delid);
+        Movie::whereIn('id', $delid)->delete();
+        
+        return redirect()->route('movie.index')
+            ->with('success', 'Movies were deleted successfully');
     }
 }
