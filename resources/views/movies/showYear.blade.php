@@ -91,7 +91,9 @@
             </div>
         @endif
 
-        <a href="/movie" class="btn btn-primary btn-lg active" style="text-align: center;">Back</a>
+        <div style="text-align: center;">
+            <a href="/movie" class="btn btn-primary btn-lg active">Back</a>
+        </div>
 
     </div>
 @endsection

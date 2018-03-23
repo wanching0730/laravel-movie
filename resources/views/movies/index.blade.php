@@ -42,50 +42,63 @@
         }
 
         .btn-dark {
-        font-size:12px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        display:inline-block;
-        text-align:center;
-        width:100px;
-        font-weight:bold;
-        padding:6px 0px;
-        border:1px solid pink;
-        border-radius:2px;
-        position:relative;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);
-        z-index:2;
-        &:before {
-            -webkit-transition:0.5s all ease;
-            transition:0.5s all ease;
-            position:absolute;
-            top:0;
-            left:50%;
-            right:50%;
-            bottom:0;
-            opacity:0;
-            content:'';
-            background-color:$second;
-            z-index:-1;
-        }
-        &:hover {
+            font-size:12px;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            display:inline-block;
+            text-align:center;
+            width:100px;
+            font-weight:bold;
+            padding:6px 0px;
+            border:1px solid pink;
+            border-radius:2px;
+            position:relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);
+            z-index:2;
             &:before {
-            -webkit-transition:0.5s all ease;
-            transition:0.5s all ease;
-            left:0;
-            right:0;
-            opacity:1;
+                -webkit-transition:0.5s all ease;
+                transition:0.5s all ease;
+                position:absolute;
+                top:0;
+                left:50%;
+                right:50%;
+                bottom:0;
+                opacity:0;
+                content:'';
+                background-color:$second;
+                z-index:-1;
+            }
+            &:hover {
+                &:before {
+                -webkit-transition:0.5s all ease;
+                transition:0.5s all ease;
+                left:0;
+                right:0;
+                opacity:1;
+                }
+            }
+            &:focus {
+                &:before {
+                -webkit-transition:0.5s all ease;
+                transition:0.5s all ease;
+                left:0;
+                right:0;
+                opacity:1;
+                }
             }
         }
-        &:focus {
-            &:before {
-            -webkit-transition:0.5s all ease;
-            transition:0.5s all ease;
-            left:0;
-            right:0;
-            opacity:1;
-            }
+
+        .stylish-input-group .input-group-addon{
+            background: white !important; 
         }
+        .stylish-input-group .form-control{
+            border-right:0; 
+            box-shadow:0 0 0; 
+            border-color:#ccc;
+        }
+        .stylish-input-group button{
+            border:0;
+            background:transparent;
         }
 
     </style>
@@ -111,7 +124,7 @@
             </nav>
         </div>
 
-        <div class="btn-group" style="width:100%">
+        <div class="btn-group" style="width:100%; text-align: center;">
             @for($i = 2009; $i <= 2018; $i++)
                 @guest
                     <a href="/movie/sort/{{ $i }}" class="btn-dark">{{ $i }}</a>
@@ -123,18 +136,44 @@
 
         <br></br>
 
-        <a href="/movie/sort/{{'title'}}" class="btn-dark" style="border: 1px solid purple;">By Title</a>
-        <a href="/movie/sort/{{'year'}}" class="btn-dark" style="border: 1px solid purple;">By Year</a>
-        <a href="/movie/sort/{{'fullGenre'}}" class="btn-dark" style="border: 1px solid purple;">By Genre</a>
-        <br></br>
+        <div style="text-align: center;">
+            <a href="/movie/sort/{{'title'}}" class="btn-dark" style="border: 1px solid purple;">By Title</a>
+            <a href="/movie/sort/{{'year'}}" class="btn-dark" style="border: 1px solid purple;">By Year</a>
+            <a href="/movie/sort/{{'fullGenre'}}" class="btn-dark" style="border: 1px solid purple;">By Genre</a>
+            <br></br>
+        </div>
+        
+        <form action="/movie/search" method="POST" role="search">
+            {{ csrf_field() }}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div id="imaginary_container"> 
+                            <div class="input-group stylish-input-group">
+                                <input type="text" class="form-control"  placeholder="Search..." name="search">
+                                <span class="input-group-addon">
+                                    <button type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>  
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
-         <div class="search-container">
+         <!-- <div class="search-container">
+         <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
             <form action="/movie/search" method="POST" role="search">
                 {{ csrf_field() }}
                 <input type="text" placeholder="Search.." name="search" style="border: 1px solid pink;">
-                <button type="submit" style="border: 1px solid pink;">Go</button>
+                <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-        </div>
+            </div>
+	</div>
+        </div> -->
 
         @if(Auth::check())
             <div class="panel-heading"><a  class="pull-right btn btn-primary btn-sm" href="/movie/create">
