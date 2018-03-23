@@ -27,15 +27,16 @@
 
     @section('content')
 
-        <div class="container">
-            <nav aria-label="breadcrumb" style="background-color: white;">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/movie">Movies</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $movie->title }}</li>
-                </ol>
-            </nav>
-        </div>
+    <div class="container">
+       
+        <nav aria-label="breadcrumb" style="background-color: white;">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                <li class="breadcrumb-item"><a href="/movie">Movies</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $movie->title }}</li>
+            </ol>
+        </nav>
+       
 
         <div class="jumbotron">
             <h1 class="display-4" style="text-align: center; color: black;">{{ $movie->title }}</h1>
@@ -81,7 +82,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     @endsection
 
 </body>
