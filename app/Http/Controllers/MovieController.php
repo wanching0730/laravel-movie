@@ -111,17 +111,17 @@ class MovieController extends Controller
         ->with('success', 'Movie was updated successfully');
     }
 
-    public function destroy($id) 
-    {
-        $findMovie = Movie::find($id)->first();
-        // var_dump($findMovie);
-        if($findMovie->delete()) {
-            return redirect()->route('movie.index')
-            ->with('success', 'Movie was deleted successfully');
-        }
+    // public function destroy($id) 
+    // {
+    //     $findMovie = Movie::find($id)->first();
+    //     // var_dump($findMovie);
+    //     if($findMovie->delete()) {
+    //         return redirect()->route('movie.index')
+    //         ->with('success', 'Movie was deleted successfully');
+    //     }
 
-        return back()->withInput()->with('error', 'Movie could not be deleted');
-    }
+    //     return back()->withInput()->with('error', 'Movie could not be deleted');
+    // }
 
     public function getMovieBySort($sort) {
 
@@ -140,13 +140,13 @@ class MovieController extends Controller
 
     public function getMovieBySearch() {
         $search = Input::get('search');
-        $movies = Movie::where('title', $search)->get();
+        $movies = Movie::where('title', 'LIKE', '%'.$search.'%')->get();
 
         if($movies->first() == null) 
-            $movies = Movie::where('fullYear', $search)->get();
+            $movies = Movie::where('fullYear', 'LIKE', '%'.$search.'%')->get();
         
         if($movies->first() == null) 
-            $movies = Movie::where('fullGenre', $search)->get(); 
+            $movies = Movie::where('fullGenre', 'LIKE', '%'.$search.'%')->get(); 
                  
         return view('movies.showYear', ['movies' => $movies]);
     }
