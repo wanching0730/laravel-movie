@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Movie;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -135,5 +136,18 @@ class MovieController extends Controller
         
         return view('movies.showYear', ['movies' => $movies]);
 
+    }
+
+    public function getMovieBySearch() {
+        $search = Input::get('search');
+        $movies = Movie::where('title', $search)->get();
+
+        if($movies->first() == null) 
+            $movies = Movie::where('fullYear', $search)->get();
+        
+        if($movies->first() == null) 
+            $movies = Movie::where('fullGenre', $search)->get(); 
+                 
+        return view('movies.showYear', ['movies' => $movies]);
     }
 }
