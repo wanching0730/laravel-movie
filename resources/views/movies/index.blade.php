@@ -196,22 +196,22 @@
                 @else 
                     <table class="table table-hover table-dark" border="1" style="text-align: center; color: grey; font-size: 16px;">
                 @endguest
-                    <thead>
+                    <thead style="text-align: left;">
                         <tr>
                             @if(Auth::check())
                                 <th width="50px"></th>
                             @endif                           
-                            <th style="text-align: center;">No.</th>
-                            <th style="text-align: center;">Title</th>
-                            <th style="text-align: center;">Genre</th>
-                            <th style="text-align: center;">Year</th>
+                            <th>No.</th>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Year</th>
                             @if(Auth::check())
                                 <th style="text-align: center;">Actions</th>
                             @endif
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody style="text-align: left;">
                         @foreach($movies as $i => $movie)
                             <tr>
                                 @if(Auth::check())
