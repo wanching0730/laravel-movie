@@ -39,7 +39,7 @@
        
 
         <div class="jumbotron">
-            <h1 class="display-4" style="text-align: center; color: black;">{{ $movie->title }}</h1>
+            <h1 class="display-4" style="text-align: center; color: black; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;">{{ $movie->title }}</h1>
         </div>
 
         <div class="col-md-5 col-lg-5 col-sm-5 pull-left">
@@ -66,11 +66,11 @@
                         <tbody>
                             <tr>
                                 <td>Genre</td>
-                                <td>{{ $movie->genre }}</td>
+                                <td>{{ $movie->fullGenre }}</td>
                             </tr>
                             <tr>
                                 <td>Year</td>
-                                <td>{{ $movie->year }}</td>
+                                <td>{{ $movie->fullYear }}</td>
                             </tr>
                             <tr>
                                 <td>Synopsis</td>
