@@ -97,16 +97,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="form-group row">
-                    {!! Form::label('movie-image', 'Poster', [
-                            'class' => 'control-label col-sm-3',
-                        ]) !!}
-
-                    <div class="col-sm-9">
-                        {!! Form::file('image', array('class' => 'image')) !!}
-                    </div>
-                </div> -->
-
                 <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                         {!! Form::button('Update', [

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
-use Illuminate\Http\Request;
 use App\Movie;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Response;
 use App\Common; 
+use Illuminate\Http\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MovieController extends Controller
 {
@@ -34,9 +34,6 @@ class MovieController extends Controller
             $this->validate($request, [
                 'title' => 'min:2|max:20',
                 'synopsis' => 'min:20|max:100'
-                //'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
-                // 'address' => 'required',
-                // 'postcode' => 'required'
             ]);
 
             $genreName = Common::$genre[$request['genre']];
@@ -161,9 +158,6 @@ class MovieController extends Controller
     }
 
     public function deleteAll(Request $request) {
-        // $ids = $request->ids;
-        // Movie::whereIn('id', explode(",", $ids))->delete();
-
         $delid = $request->input('delid');
         var_dump($delid);
         Movie::whereIn('id', $delid)->delete();
