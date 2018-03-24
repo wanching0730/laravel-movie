@@ -12,27 +12,27 @@
         *,
         *::before,
         *::after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
         }
 
         .dark {
-        background:#24252A;
+            background:#24252A;
         }
 
         .flex {
-        min-height:50vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
+            min-height:50vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
 
         a.btn-dark {
-        color:pink;
-        text-decoration:none;
-        -webkit-transition:0.3s all ease;
-        transition:0.3s ease all;
+            color:pink;
+            text-decoration:none;
+            -webkit-transition:0.3s all ease;
+            transition:0.3s ease all;
         &:hover {
             color:#FFF;
         }
@@ -99,6 +99,10 @@
         .stylish-input-group button{
             border:0;
             background:transparent;
+        }
+
+        #block1, #block2 {
+            display: inline;
         }
 
     </style>
@@ -215,9 +219,9 @@
                                 @endif
                                 <td class="table-text">
                                     <div>{{ $i+1 }}</div>
-                                </td>
+                                </td>                                                                    
                                 <td class="table-text">
-                                    <div>
+                                    <div id="block1">
                                         {!! link_to_route(
                                             'movie.show',
                                             $title = $movie->title,
@@ -226,7 +230,10 @@
                                             ]
                                         ) !!}
                                     </div>
-                                </td>
+                                    @if($movie->fullYear == 2018 || $movie->fullYear == 2017)
+                                        <span id="block2" class="badge badge-secondary" style="margin-left: 6px;">New</span>
+                                    @endif
+                                </td>                         
                                 <td class="table-text">
                                     <div>{{ $movie->fullGenre }}</div>
                                 </td>
