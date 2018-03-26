@@ -2,7 +2,11 @@
 
 Auth::routes();
 
-Route::get('/', 'MovieController@index')->name('/');
+Route::get('/', function()
+{
+    return "hello world";
+});
+//Route::get('/', 'MovieController@index')->name('/');
 Route::get('/home', 'MovieController@index')->name('home');
 
 Route::get('/movie/create', 'MovieController@create')->name('movie.create');
