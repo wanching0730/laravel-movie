@@ -10,7 +10,7 @@ before_script:
   - php artisan key:generate
   - php artisan cache:clear
   - php artisan config:clear
-  - php artisan migrate:install --env=local --no-interaction
+  - php artisan migrate
   - composer dump-autoload
 
 before_install:
