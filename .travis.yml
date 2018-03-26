@@ -10,6 +10,7 @@ before_script:
   - php artisan key:generate
   - php artisan cache:clear
   - php artisan config:clear
+  - php artisan make:auth
   - php artisan migrate
 
 before_install:
