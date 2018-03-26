@@ -10,8 +10,8 @@ before_script:
   - php artisan key:generate
   - php artisan cache:clear
   - php artisan config:clear
-  - php artisan make:auth
-  - php artisan migrate
+  - php artisan migrate:install --env=local --no-interaction
+  - composer dump-autoload
 
 before_install:
   - mysql -e 'CREATE DATABASE moviedb;'
