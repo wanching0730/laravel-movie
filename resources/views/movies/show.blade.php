@@ -48,6 +48,10 @@
             @endif
         </div>
 
+        <a  class="btn btn-info btn-sm" href="/movie/trailer/{{$movie->id}}">
+            <span class="glyphicon glyphicon-expand"></span>Trailer
+        </a>
+
         <div class="col-md-7 col-lg-7 col-sm-7 pull-right">
             <div id="movie-details">
                 @guest

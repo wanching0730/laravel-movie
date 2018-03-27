@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MovieController extends Controller
@@ -164,5 +165,9 @@ class MovieController extends Controller
         
         return redirect()->route('movie.index')
             ->with('success', 'Movies were deleted successfully');
+    }
+
+    public function viewTrailer($id) {
+        return Redirect::away('http://www.google.com');
     }
 }
