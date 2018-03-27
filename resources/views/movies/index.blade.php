@@ -130,8 +130,6 @@
             </nav>
         </div>
 
-<a href="/movie/trailer">Trailer</a>
-
         <div class="btn-group" style="width:100%; text-align: center;">
             @for($i = 2009; $i <= 2018; $i++)
                 @guest

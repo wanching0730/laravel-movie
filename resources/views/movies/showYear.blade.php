@@ -47,6 +47,8 @@
                             <th>Year</th>
                             @if(Auth::check())
                                 <th style="text-align: center;">Action</th>
+                            @else   
+                                <th style="text-align: center;">Trailer</th>
                             @endif
                         </tr>
                     </thead>
@@ -104,6 +106,10 @@
                                             </form>
                                         </li>
                                     </td> -->
+                                @else   
+                                    <td style="text-align: center;">               
+                                        <a href="/movie/trailer/{{ $movie->id }}"><i class="fas fa-play-circle"></i></a></li>
+                                    </td>
                                 @endif
                             </tr>
                         @endforeach
