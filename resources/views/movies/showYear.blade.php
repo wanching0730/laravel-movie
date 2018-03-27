@@ -46,7 +46,7 @@
                             <th>Genre</th>
                             <th>Year</th>
                             @if(Auth::check())
-                                <th style="text-align: center;">Actions</th>
+                                <th style="text-align: center;">Action</th>
                             @endif
                         </tr>
                     </thead>
@@ -81,10 +81,8 @@
                                     <div>{{ $movie->fullYear }}</div>
                                 </td>
                                 @if(Auth::check())
-                                    <td>
-                                        <li>
-                                            <a href="/movie/edit/{{ $movie->id }}"><i class="fas fa-edit"></i> Edit</a></li>
-                                        </li>
+                                    <td style="text-align:center;">                                      
+                                        <a href="/movie/edit/{{ $movie->id }}"><i class="fas fa-edit"></i> Edit</a></li>                                       
                                     </td>
                                     <!-- <td>
                                         <li>
