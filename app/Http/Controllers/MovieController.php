@@ -168,6 +168,7 @@ class MovieController extends Controller
     }
 
     public function viewTrailer($id) {
-        return Redirect::away('http://www.google.com');
+        $movie = Movie::find($id);
+        return Redirect::away($movie->url);
     }
 }

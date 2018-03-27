@@ -303,6 +303,7 @@ class ComposerStaticInit035b56f1fc222e0d513087e7e7d2ab44
 
     public static $classMap = array (
         'AddFullGenreAndFullYearToMoviesTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_18_100302_add_fullGenre_and_fullYear_to_movies_table.php',
+        'AddTrailerUrlToMoviesTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_27_145626_add_trailer_url_to_movies_table.php',
         'App\\Common' => __DIR__ . '/../..' . '/app/Common.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
