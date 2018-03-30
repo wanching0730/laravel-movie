@@ -30,7 +30,7 @@
 
     <div class="panel-body">
 
-        <h1 align="center">Create New Movie</h1>
+        <h1 align="center">Modification of Movie</h1>
 
         <div class="row  col-md-12 col-lg-12 col-sm-12">
 

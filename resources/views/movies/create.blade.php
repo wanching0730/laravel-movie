@@ -29,7 +29,7 @@ use App\Common;
             } else if(title.length < 2 || title.length > 20) {
                 alert("Invalid title! Title must be in the length of 2-20 characters");
                 return false;
-            } else if(synopsis.length < 20 || title.length > 100) {
+            } else if(synopsis.length < 20 || synopsis.length > 100) {
                 alert("Invalid synopsis! Synopsis must be in the length of 20-100 characters");
                 return false;
             } else if(!url.includes("https") || !url.includes("www.") || !url.includes(".com")) {
