@@ -159,10 +159,13 @@ class MovieController extends Controller
 
     public function deleteAll(Request $request) {
         $delid = $request->input('delid');
-        var_dump($delid);
-        Movie::whereIn('id', $delid)->delete();
-        
-        return redirect()->route('movie.index')
+
+        if($delid != null) {
+            Movie::whereIn('id', $delid)->delete();
+            return redirect()->route('movie.index')
             ->with('success', 'Movies were deleted successfully');
+        }
+
+        return redirect()->route('movie.index')->with('error', 'No item is selected to be deleted');
     }
 }
