@@ -14,16 +14,26 @@ use App\Common;
             var title = document.forms['myForm']['title'].value;
             var genre = document.forms['myForm']['genre'].value;
             var year = document.forms['myForm']['year'].value;
+            var url = document.forms['myForm']['url'].value;
             var synopsis = document.forms['myForm']['synopsis'].value;
             var image = document.forms['myForm']['image'].value;
             var extension = image.substring(
                         image.lastIndexOf('.') + 1).toLowerCase();
 
-            if(title=="" || genre=="" || year=="" || synopsis=="" || image=="") {
+            if(title=="" || genre=="" || year=="" || url=="" || synopsis=="" || image=="") {
                 alert("Please complete all fields");
                 return false;
             } else if(extension != "jpg") {
-                alert("Photo only allows file type of .JPG");
+                alert("Invalid poster file! Poster only allows file type of .JPG");
+                return false;
+            } else if(title.length < 2 || title.length > 20) {
+                alert("Invalid title! Title must be in the length of 2-20 characters");
+                return false;
+            } else if(synopsis.length < 20 || title.length > 100) {
+                alert("Invalid synopsis! Synopsis must be in the length of 20-100 characters");
+                return false;
+            } else if(!url.includes("https") || !url.includes("www.") || !url.includes(".com")) {
+                alert("Invalid trailer URL! Please follow this format of URL: https://www.youtube.com/watch?v=K4zm30yeHHE");
                 return false;
             }
         }
