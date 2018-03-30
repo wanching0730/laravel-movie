@@ -122,6 +122,7 @@
 
                 <!-- Authentication Links -->
                 @guest
+                    <li><a href="{{ route('movie.index') }}"><i class="fas fa-film"></i> Movies</a></li>
                     <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></i> Login</a></li>
                     <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
                 
