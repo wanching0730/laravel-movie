@@ -124,7 +124,7 @@
 
             
                 <div style="text-align: center;">
-                    @if(Auth::check())
+                    @if(Auth::check() && count($movies) > 0)
                         <button type="submit" class="btn btn-danger">Delete Selected </button>
                     @endif
                     <a href="/movie" class="btn btn-primary active">Back</a>
