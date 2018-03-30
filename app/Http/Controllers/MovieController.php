@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MovieController extends Controller
@@ -167,5 +168,10 @@ class MovieController extends Controller
         }
 
         return redirect()->route('movie.index')->with('error', 'No item is selected to be deleted');
+    }
+
+    public function viewTrailer($id) {
+        $movie = Movie::find($id);
+        return Redirect::away($movie->url);
     }
 }

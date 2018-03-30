@@ -83,6 +83,21 @@ use App\Common;
             </div>
 
             <div class="form-group row">
+                {!! Form::label('movie-url', 'Trailer URL', [
+                    'class' => 'control-label col-sm-3',
+                ]) !!}
+
+                <div class="col-sm-9">
+                    {!! Form::text('url', null, [
+                        'id' => 'movie-url',
+                        'class' => 'form-control',
+                        'placeholder' => 'Eg: http://www.google.com',
+                        'maxlength' => 50,
+                    ]) !!}
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="control-label col-sm-3">
                     <label>Synopsis</label>
                 </div>

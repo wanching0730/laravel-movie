@@ -10,6 +10,7 @@ class Movie extends Model
         'title',
         'year',
         'genre',
+        'url',
         'image',
         'synopsis'
     ];

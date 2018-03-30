@@ -16,5 +16,6 @@ Route::delete('/movie/{id}', 'MovieController@destroy')->name('movie.destroy');
 Route::post('/movie/deleteAll', 'MovieController@deleteAll')->name('movie.deleteAll');
 Route::get('/movie/sort/{sort}', 'MovieController@getMovieBySort')->name('movie.sort');
 Route::post('/movie/search', 'MovieController@getMovieBySearch')->name('movie.search');
+Route::get('/movie/trailer/{id}', 'MovieController@viewTrailer')->name('movie.trailer');
 
 

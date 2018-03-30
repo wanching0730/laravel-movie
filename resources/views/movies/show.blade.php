@@ -37,7 +37,6 @@
             </ol>
         </nav>
        
-
         <div class="jumbotron">
             <h1 class="display-4" style="text-align: center; color: black; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;">{{ $movie->title }}</h1>
         </div>
@@ -49,6 +48,12 @@
         </div>
 
         <div class="col-md-7 col-lg-7 col-sm-7 pull-right">
+
+            <a class="btn btn-info btn-md" href="/movie/trailer/{{$movie->id}}">
+                <span class="glyphicon glyphicon-expand"></span>   Watch Trailer
+            </a>
+            <br><br>
+            
             <div id="movie-details">
                 @guest
                     <table class="table table-stripped" border="1" style="font-size: 16px; color: white">
