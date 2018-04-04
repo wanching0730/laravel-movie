@@ -41,7 +41,8 @@
                             @if(Auth::check())
                                 <th width="50px"></th>
                             @endif
-                            <th>No.</th>
+                            <th style="text-align:center;">No.</th>
+                            <th style="text-align:center;">Poster</th>
                             <th>Title</th>
                             <th>Genre</th>
                             <th>Year</th>
@@ -60,8 +61,11 @@
                                     <td><input type="checkbox" name="delid[]"  value="{{ $movie->id }}"></td>
                                 @endif
                                 <td class="table-text">
-                                    <div>{{ $i+1 }}</div>
-                                </td>
+                                    <div style="text-align:center;">{{ $i+1 }}</div>
+                                </td>    
+                                <td>            
+                                    <img src="{{ url('storage/'.$movie->imageUrl) }}" alt="image" style="display:block; margin:0 auto;width:60px;height:100px;text-align:center;">
+                                </td>     
                                 <td class="table-text">
                                     <div id="block1">
                                         {!! link_to_route(
@@ -85,27 +89,7 @@
                                 @if(Auth::check())
                                     <td style="text-align:center;">                                      
                                         <a href="/movie/edit/{{ $movie->id }}"><i class="fas fa-edit"></i> Edit</a></li>                                       
-                                    </td>
-                                    <!-- <td>
-                                        <li>
-                                            <a   
-                                            href="#"
-                                                onclick="
-                                                var result = confirm('Are you sure you wish to delete this movie {{$movie->id}}?');
-                                                    if( result ){
-                                                            event.preventDefault();
-                                                            document.getElementById('delete-form').submit();
-                                                    }
-                                                        "
-                                                        ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-
-                                            <form id="delete-form" action="{{ route('movie.destroy',[$movie->id]) }}" 
-                                                method="POST" style="display: none;">
-                                                        <input type="hidden" name="_method" value="delete">  
-                                                        {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                    </td> -->
+                                    </td>                                    
                                 @else   
                                     <td style="text-align: center;">               
                                         <a href="/movie/trailer/{{ $movie->id }}"><i class="fas fa-play-circle"></i></a></li>

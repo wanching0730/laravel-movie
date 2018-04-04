@@ -203,7 +203,8 @@
                             @if(Auth::check())
                                 <th width="50px"></th>
                             @endif                           
-                            <th>No.</th>
+                            <th style="text-align:center;">No.</th>
+                            <th style="text-align:center;">Poster</th>
                             <th>Title</th>
                             <th>Genre</th>
                             <th>Year</th>
@@ -222,7 +223,10 @@
                                     <td><input type="checkbox" name="delid[]"  value="{{ $movie->id }}"></td>
                                 @endif
                                 <td class="table-text">
-                                    <div>{{ $i+1 }}</div>
+                                    <div style="text-align:center;">{{ $i+1 }}</div>
+                                </td>    
+                                <td>            
+                                    <img src="{{ url('storage/'.$movie->imageUrl) }}" alt="image" style="display:block; margin:0 auto;width:60px;height:100px;text-align:center;">
                                 </td>                                                                    
                                 <td class="table-text">
                                     <div id="block1">

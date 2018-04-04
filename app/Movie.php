@@ -11,7 +11,7 @@ class Movie extends Model
         'year',
         'genre',
         'url',
-        'image',
+        'imageUrl',
         'synopsis'
     ];
 }

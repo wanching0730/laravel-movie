@@ -40,12 +40,6 @@ class MovieController extends Controller
             $genreName = Common::$genre[$request['genre']];
             $movieYear = Common::$years[$request['year']];
 
-            $movie = new Movie;
-            $movie->fill($request->all());
-            $movie->fullGenre = $genreName;
-            $movie->fullYear = $movieYear;
-            $movie->save();
-
             $movieTitle = str_replace(' ', '', $request['title']);
             $file = $request->file('image');
             $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
@@ -53,6 +47,13 @@ class MovieController extends Controller
                 if($filename)
                     Storage::disk('public')->put($filename, file_get_contents($file));
             }
+
+            $movie = new Movie;
+            $movie->fill($request->all());
+            $movie->fullGenre = $genreName;
+            $movie->fullYear = $movieYear; 
+            $movie->imageUrl = $filename;
+            $movie->save();
 
             return redirect()->route('movie.index')
                 ->with('success', 'Movie was added successfully');
@@ -99,11 +100,6 @@ class MovieController extends Controller
             $genreName = Common::$genre[$request['genre']];
             $movieYear = Common::$years[$request['year']];
 
-            $movie->fill($request->all());
-            $movie->fullGenre = $genreName;
-            $movie->fullYear = $movieYear;
-            $movie->save();
-
             $movieTitle = str_replace(' ', '', $request['title']);
             $file = $request->file('image');
             var_dump($file);
@@ -113,6 +109,12 @@ class MovieController extends Controller
                     Storage::disk('public')->put($filename, file_get_contents($file));
             }
 
+            $movie->fill($request->all());
+            $movie->fullGenre = $genreName;
+            $movie->fullYear = $movieYear;
+            $movie->imageUrl = $filename;
+            $movie->save();
+           
             return redirect()->route('movie.index')
             ->with('success', 'Movie was updated successfully');
         }
