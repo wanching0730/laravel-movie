@@ -102,7 +102,6 @@ class MovieController extends Controller
 
             $movieTitle = str_replace(' ', '', $request['title']);
             $file = $request->file('image');
-            var_dump($file);
             $filename = $movieTitle . '-' . $request['genre'] . '.jpg';
             if($file) {
                 if($filename)
